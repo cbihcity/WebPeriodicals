@@ -1,0 +1,14 @@
+<!DOCTYPE xml>
+<Context>
+	
+    <Resource name="jdbc/periodicals"
+              auth="Container"
+              type="javax.sql.DataSource"
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+              username="root"
+              password="Geldiev_1989"
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/magazines?useSSL=false&amp;autoReconnect=true"
+              maxActive="15"
+              maxIdle="10"/>
+</Context>
