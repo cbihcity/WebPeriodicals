@@ -84,15 +84,10 @@ public interface Constants {
 	String MAG = "mag";
 	String MAG_ID = "mag_id";
 	String MONTH_VALUE = "monthValue";
-<<<<<<< HEAD
 	String FIRST_NAME = "firstName";
 	String FIRSTNAME = "first_name";
 	String LAST_NAME = "lastName";
 	String LASTNAME = "last_name";
-=======
-	String FIRST_NAME = "first_name";
-	String LAST_NAME = "last_name";
->>>>>>> origin/master
 	String CATEGORY = "category";
 	String INCORRECT_EMAIL_OR_PASSWORD = "Incorrect email or password";
 	String SQLEXCEPTION_AT_LOGIN_USER_ACTION = "SqlException at LoginUserAction";

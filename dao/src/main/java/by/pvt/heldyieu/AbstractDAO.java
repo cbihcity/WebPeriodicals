@@ -5,10 +5,9 @@ import by.pvt.heldyieu.interfaces.GenericDAO;
 import by.pvt.heldyieu.interfaces.Identified;
 import by.pvt.heldyieu.utils.HibernateUtil;
 import org.apache.log4j.Logger;
-<<<<<<< HEAD
+
 import org.hibernate.Criteria;
-=======
->>>>>>> origin/master
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
@@ -34,22 +33,14 @@ public abstract class AbstractDAO<T extends Identified, PK extends Number> imple
     public T create(T object) throws Exception {
         LOGGER.info("Try to create new user in USER database");
         try {
-<<<<<<< HEAD
+
             Session session = util.getSession();
             session.saveOrUpdate(object);
         }
         catch(HibernateException e) {
 
         }
-=======
-            Session session = HibernateUtil.getInstance().getSession();
-            session.saveOrUpdate(object);
-        }
-        catch(HibernateException e) {
-            throw new Exception(e);
-        }
-        
->>>>>>> origin/master
+
         return object;
     }
 

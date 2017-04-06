@@ -33,28 +33,22 @@ public class UserServiceImpl implements IUserService{
 	@Override
 	public void addUser(User user) throws SQLException {
 		LOGGER.info("Try to add new user to database");
-<<<<<<< HEAD
-=======
+
 		User us = null;
->>>>>>> origin/master
+
 		Session session = HibernateUtil.getInstance().getSession();
 		Transaction transaction = null;
 		try {
 			transaction = session.beginTransaction();
-<<<<<<< HEAD
+
 			userDao.create(user);
-=======
-			us = userDao.create(user);
->>>>>>> origin/master
+
 			transaction.commit();
 		} catch (Exception e){
 			transaction.rollback();
 		}
-<<<<<<< HEAD
-=======
-		return us;
->>>>>>> origin/master
     }
+
 	@Override
 	public User getUser(Integer id) throws SQLException {
 		User user = null;

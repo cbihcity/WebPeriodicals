@@ -33,7 +33,7 @@ public class AddUserCommand implements ServletCommand {
 			user.setLastName(last_name);
 			user.setEmail(email);
 			user.setPassword(pass);
-			user.setUserType(Integer.parseInt(UserType.USER.getValue()));
+			user.setUserType(UserType.USER);
 			try {
 				UserServiceImpl.getInstance().addUser(user);
 			request.setAttribute(SUCCESS_MESSAGE, USER_ADD_SUCCESS);

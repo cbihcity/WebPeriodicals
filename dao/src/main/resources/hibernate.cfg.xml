@@ -21,10 +21,7 @@
         <property name="cache.use_second_level_cache">true</property>
 
         <mapping class="by.pvt.heldyieu.entity.User"/>
-<<<<<<< HEAD
-=======
         <!--<mapping class="by.pvt.heldyieu.entity.Type"/>-->
->>>>>>> origin/master
         <!--<mapping class="by.pvt.khudnitsky.payments.entities.Account"/>-->
         <!--<mapping class="by.pvt.khudnitsky.payments.entities.Operation"/>-->
         <!--<mapping class="by.pvt.khudnitsky.payments.entities.UserDetail"/>-->

@@ -37,7 +37,7 @@ public class EditUserCommand implements ServletCommand {
 				user.setId(Integer.valueOf(request.getParameter(USER_ID)));
 				user.setFirstName(request.getParameter(FIRST_NAME));
 				user.setLastName(request.getParameter(LAST_NAME));
-				user.setUserType(Integer.parseInt(UserType.valueOf(request.getParameter(CATEGORY)).getValue()));
+				user.setUserType(UserType.valueOf(request.getParameter(CATEGORY)));
 				user.setEmail(request.getParameter(EMAIL));
 				user.setPassword(request.getParameter(PASSWORD));
 				userServiceImpl.updateUser(user);
