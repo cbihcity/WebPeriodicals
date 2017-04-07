@@ -22,7 +22,6 @@ public class UserServiceImpl implements IUserService{
 		LOGGER.info("Create new UserDAOImpl entity");
 		userDao = (UserDAOImpl) UserDAOImpl.getInstance();
 	}
-	
 	public static UserServiceImpl getInstance(){
 		LOGGER.info("Getting userservice entity");
 		if (INSTANCE == null) {
@@ -33,20 +32,16 @@ public class UserServiceImpl implements IUserService{
 	@Override
 	public void addUser(User user) throws DaoException {
 		LOGGER.info("Try to add new user to database");
-
-		User us = null;
-
 		Session session = HibernateUtil.getInstance().getSession();
 		Transaction transaction = null;
 		try {
 			transaction = session.beginTransaction();
-
 			userDao.create(user);
-
 			transaction.commit();
 		} catch (Exception e){
 			transaction.rollback();
 		}
+        HibernateUtil.getInstance().releaseSession(session);
     }
 
 	@Override
@@ -65,6 +60,7 @@ public class UserServiceImpl implements IUserService{
 			transaction.rollback();
 			LOGGER.error(e);
 		}
+        HibernateUtil.getInstance().releaseSession(session);
 		return user;
     }
 	@Override
@@ -81,6 +77,7 @@ public class UserServiceImpl implements IUserService{
 			transaction.rollback();
             throw new DaoException();
 		}
+        HibernateUtil.getInstance().releaseSession(session);
     }
 	@Override
 	public boolean deleteUser(Integer id) throws DaoException {
@@ -96,6 +93,7 @@ public class UserServiceImpl implements IUserService{
 		catch (Exception e) {
 			transaction.rollback();
 		}
+        HibernateUtil.getInstance().releaseSession(session);
 		return result;
     }
 
@@ -130,6 +128,7 @@ public class UserServiceImpl implements IUserService{
 		} catch (Exception e){
 			transaction.rollback();
 		}
+		HibernateUtil.getInstance().releaseSession(session);
 			return user;
     }
 }

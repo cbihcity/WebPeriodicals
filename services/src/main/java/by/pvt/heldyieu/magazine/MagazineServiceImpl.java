@@ -35,6 +35,7 @@ public class MagazineServiceImpl implements IMagazineService {
 		} catch (Exception e){
 			transaction.rollback();
 		}
+		HibernateUtil.getInstance().releaseSession(session);
     }
 	
 	@Override
@@ -50,6 +51,7 @@ public class MagazineServiceImpl implements IMagazineService {
 		catch (Exception e) {
 			transaction.rollback();
 		}
+		HibernateUtil.getInstance().releaseSession(session);
 		return magazine;
     }
 	
@@ -65,6 +67,7 @@ public class MagazineServiceImpl implements IMagazineService {
 		catch (Exception e) {
 			transaction.rollback();
 		}
+		HibernateUtil.getInstance().releaseSession(session);
     }
 	
 	@Override
@@ -81,6 +84,7 @@ public class MagazineServiceImpl implements IMagazineService {
 		catch (Exception e) {
 			transaction.rollback();
 		}
+		HibernateUtil.getInstance().releaseSession(session);
 		return result;
     }
 	
@@ -97,6 +101,7 @@ public class MagazineServiceImpl implements IMagazineService {
 		catch (Exception e) {
 			transaction.rollback();
 		}
+		HibernateUtil.getInstance().releaseSession(session);
 		return magazines;
     }
 	

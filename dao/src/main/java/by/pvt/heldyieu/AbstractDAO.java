@@ -63,7 +63,6 @@ public abstract class AbstractDAO<T extends Identified, PK extends Number> imple
     public void update(T object) throws DaoException {
         try {
             Session session = util.getSession();
-            session.setCacheMode(CacheMode.IGNORE);
             session.update(object);
         }
         catch(HibernateException e) {
