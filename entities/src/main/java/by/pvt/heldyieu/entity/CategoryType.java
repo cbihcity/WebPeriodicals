@@ -11,27 +11,22 @@ import java.util.Set;
  * Created by HeroDishonest on 07.04.2017.
  */
 @Entity
-@Table(name = "users_type")
+@Table(name = "category_type")
 @Cacheable(false)
-public class UserT implements Identified, Serializable {
+public class CategoryType implements Identified, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "type")
+    @Column(name = "type_name")
     private String type;
 
-    @OneToMany(mappedBy = "userT")
-    private Set<User> users;
+    @OneToMany(mappedBy = "categoryType")
+    private Set<Magazine> magazines;
 
-    public UserT() {
-    }
-
-    public UserT(String type, Set<User> users) {
-        this.type = type;
-        this.users = users;
+    public CategoryType() {
     }
 
     @Override
@@ -52,25 +47,35 @@ public class UserT implements Identified, Serializable {
         this.type = type;
     }
 
-    public Set<User> getUsers() {
-        return users;
+    public Set<Magazine> getMagazines() {
+        return magazines;
     }
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
+    public void setMagazines(Set<Magazine> magazines) {
+        this.magazines = magazines;
+    }
+
+    public CategoryType(String type, Set<Magazine> magazines) {
+        this.type = type;
+        this.magazines = magazines;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserT userT = (UserT) o;
-        return Objects.equals(id, userT.id) &&
-                Objects.equals(type, userT.type);
+        CategoryType that = (CategoryType) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(type, that.type);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, type);
+    }
+
+    @Override
+    public String toString() {
+        return type;
     }
 }

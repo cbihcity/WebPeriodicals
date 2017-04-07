@@ -44,7 +44,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td><b><fmt:message key="add.category"/></b></td>
-                                                    <td><input type="text" name="category" value="${mag.type}" readonly="readonly"/></td>
+                                                    <td><input type="text" name="category" value="${mag.categoryType}" readonly="readonly"/></td>
                                                 </tr>
                                                 <tr>
                                                     <td><b><fmt:message key="add.pricemag"/></b></td>

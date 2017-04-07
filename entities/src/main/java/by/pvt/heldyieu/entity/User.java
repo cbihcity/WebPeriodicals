@@ -7,6 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name="user")
+@Cacheable(false)
 public class User implements Identified, Serializable{
 	
 	private static final long serialVersionUID = -7237973696500040785L;

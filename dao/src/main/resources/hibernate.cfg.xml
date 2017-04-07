@@ -22,6 +22,8 @@
 
         <mapping class="by.pvt.heldyieu.entity.User"/>
         <mapping class="by.pvt.heldyieu.entity.UserT"/>
+        <mapping class="by.pvt.heldyieu.entity.Magazine"/>
+        <mapping class="by.pvt.heldyieu.entity.CategoryType"/>
         <!--<mapping class="by.pvt.khudnitsky.payments.entities.Account"/>-->
         <!--<mapping class="by.pvt.khudnitsky.payments.entities.Operation"/>-->
         <!--<mapping class="by.pvt.khudnitsky.payments.entities.UserDetail"/>-->

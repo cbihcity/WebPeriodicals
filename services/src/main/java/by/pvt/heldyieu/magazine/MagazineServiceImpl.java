@@ -2,6 +2,9 @@ package by.pvt.heldyieu.magazine;
 
 import by.pvt.heldyieu.implementation.MagazineDAOImpl;
 import by.pvt.heldyieu.entity.Magazine;
+import by.pvt.heldyieu.utils.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -22,36 +25,79 @@ public class MagazineServiceImpl implements IMagazineService {
 	}
 	
 	@Override
-	public Magazine addMagazine(Magazine magazine) throws Exception {
-		return magazineDao.create(magazine);
+	public void addMagazine(Magazine magazine) throws Exception {
+		Session session = HibernateUtil.getInstance().getSession();
+		Transaction transaction = null;
+		try {
+			transaction = session.beginTransaction();
+			magazineDao.create(magazine);
+			transaction.commit();
+		} catch (Exception e){
+			transaction.rollback();
+		}
     }
 	
 	@Override
 	public Magazine getMagazine(Integer id) throws SQLException {
-		return magazineDao.readById(id);
+		Magazine magazine = null;
+		Session session = HibernateUtil.getInstance().getSession();
+		Transaction transaction = null;
+		try {
+			transaction = session.beginTransaction();
+			magazine = magazineDao.readById(id);
+			transaction.commit();
+		}
+		catch (Exception e) {
+			transaction.rollback();
+		}
+		return magazine;
     }
 	
 	@Override
 	public void updateMagazine(Magazine magazine) throws SQLException {
+		Session session = HibernateUtil.getInstance().getSession();
+		Transaction transaction = null;
 		try {
+			transaction = session.beginTransaction();
 			magazineDao.update(magazine);
-		} catch (SQLException e) {
-			throw new SQLException(e);
+			transaction.commit();
+		}
+		catch (Exception e) {
+			transaction.rollback();
 		}
     }
 	
 	@Override
 	public boolean deleteMagazine(Integer id) throws SQLException  {
+		boolean result = false;
+		Session session = HibernateUtil.getInstance().getSession();
+		Transaction transaction = null;
 		try {
-			return magazineDao.delete(id);
-		} catch (SQLException e) {
-			throw new SQLException(e);
+			transaction = session.beginTransaction();
+			magazineDao.delete(id);
+			transaction.commit();
+			result = true;
 		}
+		catch (Exception e) {
+			transaction.rollback();
+		}
+		return result;
     }
 	
 	@Override
 	public List<Magazine> getAllMagazines() throws SQLException {
-		return magazineDao.getAll();
+		List<Magazine> magazines = null;
+		Session session = HibernateUtil.getInstance().getSession();
+		Transaction transaction = null;
+		try {
+			transaction = session.beginTransaction();
+			magazines = magazineDao.getAll();
+			transaction.commit();
+		}
+		catch (Exception e) {
+			transaction.rollback();
+		}
+		return magazines;
     }
 	
 	@Override

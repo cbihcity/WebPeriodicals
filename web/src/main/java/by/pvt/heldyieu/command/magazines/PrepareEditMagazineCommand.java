@@ -1,14 +1,16 @@
 package by.pvt.heldyieu.command.magazines;
 
+import by.pvt.heldyieu.category.CategoryTypeServiceImpl;
 import by.pvt.heldyieu.command.ServletCommand;
+import by.pvt.heldyieu.entity.CategoryType;
 import by.pvt.heldyieu.entity.Magazine;
-import by.pvt.heldyieu.enums.CategoryType;
 import by.pvt.heldyieu.magazine.MagazineServiceImpl;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
+import java.util.List;
 
 public class PrepareEditMagazineCommand implements ServletCommand {
 
@@ -31,8 +33,8 @@ public class PrepareEditMagazineCommand implements ServletCommand {
 		magazineServiceImpl = MagazineServiceImpl.getInstance();
 			try {
 				Magazine magazine = magazineServiceImpl.getMagazine(Integer.valueOf(request.getParameter(MAG_ID)));
-				CategoryType[] listOfCategories = CategoryType.values();
-				request.setAttribute(LIST, listOfCategories);
+				List<CategoryType> categoryTypes = CategoryTypeServiceImpl.getInstance().getAllCategoryType();
+				request.setAttribute(LIST, categoryTypes);
 				request.setAttribute(MAG, magazine);
 				resultPage = editMagPage;
 			} catch (SQLException e) {

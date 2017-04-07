@@ -63,7 +63,7 @@ public abstract class AbstractDAO<T extends Identified, PK extends Number> imple
     public void update(T object) throws SQLException {
         try {
             Session session = util.getSession();
-            session.merge(object);
+            session.update(object);
         }
         catch(HibernateException e) {
             LOGGER.error("Error was thrown in DAO: " + e);

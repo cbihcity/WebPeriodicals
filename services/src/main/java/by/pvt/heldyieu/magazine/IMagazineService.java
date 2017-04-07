@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IMagazineService {
 	
-	 Magazine addMagazine(Magazine magazine) throws Exception;
+	 void addMagazine(Magazine magazine) throws Exception;
 	
 	 Magazine getMagazine(Integer id) throws SQLException;
 	

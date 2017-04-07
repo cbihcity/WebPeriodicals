@@ -1,8 +1,9 @@
 package by.pvt.heldyieu.command.magazines;
 
+import by.pvt.heldyieu.category.CategoryTypeServiceImpl;
 import by.pvt.heldyieu.command.ServletCommand;
+import by.pvt.heldyieu.entity.CategoryType;
 import by.pvt.heldyieu.entity.Magazine;
-import by.pvt.heldyieu.enums.CategoryType;
 import by.pvt.heldyieu.magazine.MagazineServiceImpl;
 import org.apache.log4j.Logger;
 
@@ -33,9 +34,15 @@ public class EditMagazineCommand implements ServletCommand {
 				&& !request.getParameter(PRICE).equals("")) {
 			try {
 				Magazine mag = new Magazine();
+				CategoryType categoryType = null;
+				try {
+					categoryType = CategoryTypeServiceImpl.getInstance().findCategoryByName(request.getParameter(TYPE));
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 				mag.setId(Integer.valueOf(request.getParameter(MAG_ID)));
 				mag.setName(request.getParameter(NAME));
-				mag.setType(CategoryType.valueOf(request.getParameter(TYPE)));
+				mag.setCategoryType(categoryType);
 				mag.setPrice(Double.valueOf(request.getParameter(PRICE)));
 				magazineServiceImpl.updateMagazine(mag);
 					request.setAttribute(SUCCESS_MESSAGE, MAGAZINE_EDIT_SUCCESS);

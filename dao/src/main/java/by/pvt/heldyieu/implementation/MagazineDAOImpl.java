@@ -3,15 +3,8 @@ package by.pvt.heldyieu.implementation;
 import by.pvt.heldyieu.AbstractDAO;
 import by.pvt.heldyieu.factory.DaoFactory;
 import by.pvt.heldyieu.entity.Magazine;
-import by.pvt.heldyieu.enums.CategoryType;
 import by.pvt.heldyieu.exception.InvalidValueException;
 import org.apache.log4j.Logger;
-
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MagazineDAOImpl extends AbstractDAO<Magazine, Integer> {
 	

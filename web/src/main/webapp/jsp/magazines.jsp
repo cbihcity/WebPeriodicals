@@ -39,7 +39,7 @@
 										<c:forEach var="mag" items="${requestScope.list}">
 											<tr>
 												<td>${mag.name}</td>
-												<td>${mag.type}</td>
+												<td>${mag.categoryType}</td>
 												<td>${mag.price}</td>
 												<c:if test="${sessionScope.user.userT.type == 'ADMIN'}">
 												<td>
