@@ -17,8 +17,8 @@
         <property name="hibernate.cache.region.factory_class">
             org.hibernate.cache.ehcache.EhCacheRegionFactory
         </property>
-        <property name="cache.use_query_cache">true</property>
-        <property name="cache.use_second_level_cache">true</property>
+        <property name="cache.use_query_cache">false</property>
+        <property name="cache.use_second_level_cache">false</property>
 
         <mapping class="by.pvt.heldyieu.entity.User"/>
         <mapping class="by.pvt.heldyieu.entity.UserT"/>

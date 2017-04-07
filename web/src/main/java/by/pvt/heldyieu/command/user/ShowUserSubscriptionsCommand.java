@@ -2,6 +2,7 @@ package by.pvt.heldyieu.command.user;
 
 import by.pvt.heldyieu.command.ServletCommand;
 import by.pvt.heldyieu.entity.Subscription;
+import by.pvt.heldyieu.exceptions.DaoException;
 import by.pvt.heldyieu.subscription.SubscriptionServiceImpl;
 import org.apache.log4j.Logger;
 
@@ -51,7 +52,7 @@ public class ShowUserSubscriptionsCommand implements ServletCommand {
 				}
 			}
 			
-		} catch (SQLException e) {
+		} catch (DaoException e) {
 			LOGGER.error(SQLEXCEPTION_AT_SHOW_USER_SUBSCRIPTIONS_COMMAND);
         	request.setAttribute(ERROR_MESSAGE, SQLEXCEPTION_AT_SHOW_USER_SUBSCRIPTIONS_COMMAND);
         	resultPage =  errorPage;

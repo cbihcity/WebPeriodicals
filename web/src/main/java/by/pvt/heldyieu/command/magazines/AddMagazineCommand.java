@@ -4,6 +4,7 @@ import by.pvt.heldyieu.category.CategoryTypeServiceImpl;
 import by.pvt.heldyieu.command.ServletCommand;
 import by.pvt.heldyieu.entity.CategoryType;
 import by.pvt.heldyieu.entity.Magazine;
+import by.pvt.heldyieu.exceptions.DaoException;
 import by.pvt.heldyieu.magazine.MagazineServiceImpl;
 import org.apache.log4j.Logger;
 
@@ -25,7 +26,7 @@ public class AddMagazineCommand implements ServletCommand {
 		CategoryType categoryType = null;
 		try {
 			categoryType = CategoryTypeServiceImpl.getInstance().findCategoryByName(request.getParameter(TYPE));
-		} catch (SQLException e) {
+		} catch (DaoException e) {
 			e.printStackTrace();
 		}
 		if (!request.getParameter(NAME).equals("")
@@ -39,7 +40,7 @@ public class AddMagazineCommand implements ServletCommand {
 				MagazineServiceImpl.getInstance().addMagazine(magazine);
 				request.setAttribute(SUCCESS_MESSAGE, MAGAZINE_ADD_SUCCESS);
 				resultPage = sucessPage;
-			} catch (SQLException e) {
+			} catch (DaoException e) {
 				LOGGER.error(SQLEXCEPTION_AT_ADD_MAGAZINE_COMMAND);
 				request.setAttribute(ERROR_MESSAGE,
 						SQLEXCEPTION_AT_ADD_MAGAZINE_COMMAND);

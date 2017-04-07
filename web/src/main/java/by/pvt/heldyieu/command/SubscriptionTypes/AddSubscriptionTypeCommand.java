@@ -2,6 +2,7 @@ package by.pvt.heldyieu.command.SubscriptionTypes;
 
 import by.pvt.heldyieu.command.ServletCommand;
 import by.pvt.heldyieu.entity.SubscriptionType;
+import by.pvt.heldyieu.exceptions.DaoException;
 import by.pvt.heldyieu.subscription.type.SubscriptionTypeServiceImpl;
 import org.apache.log4j.Logger;
 
@@ -29,7 +30,7 @@ public class AddSubscriptionTypeCommand implements ServletCommand {
 				SubscriptionTypeServiceImpl.getInstance().addSubscriptionType(subscriptionType);
 				request.setAttribute(SUCCESS_MESSAGE, SUBSCRIPTION_TYPE_ADD_SUCCESS);
 				resultPage = sucessPage;
-			} catch (SQLException e) {
+			} catch (DaoException e) {
 				LOGGER.error(SQLEXCEPTION_AT_ADD_SUBSCRIPTION_TYPE_COMMAND);
 				request.setAttribute(ERROR_MESSAGE,
 						SQLEXCEPTION_AT_ADD_SUBSCRIPTION_TYPE_COMMAND);

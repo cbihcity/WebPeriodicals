@@ -1,6 +1,7 @@
 package by.pvt.heldyieu.command.Subscription;
 
 import by.pvt.heldyieu.command.ServletCommand;
+import by.pvt.heldyieu.exceptions.DaoException;
 import by.pvt.heldyieu.subscription.SubscriptionServiceImpl;
 import org.apache.log4j.Logger;
 
@@ -43,7 +44,7 @@ public class DeleteSubscriptionsCommand implements ServletCommand {
 					request.setAttribute(ERROR_MESSAGE,
 							NUMBER_FORMAT_EXCEPTION_AT_DELETE_SUBSCRIPTIONS_COMMAND);
 					resultPage = errorPage;
-				} catch (SQLException e) {
+				} catch (DaoException e) {
 					request.setAttribute(ERROR_MESSAGE,
 							SQLEXCEPTION_AT_DELETE_SUBSCRIPTIONS_COMMAND);
 					resultPage = errorPage;

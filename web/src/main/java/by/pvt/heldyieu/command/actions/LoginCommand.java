@@ -2,14 +2,13 @@ package by.pvt.heldyieu.command.actions;
 
 import by.pvt.heldyieu.command.ServletCommand;
 import by.pvt.heldyieu.entity.User;
+import by.pvt.heldyieu.exceptions.DaoException;
 import by.pvt.heldyieu.user.UserServiceImpl;
 import org.apache.log4j.Logger;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.sql.SQLException;
 
 public class LoginCommand implements ServletCommand {
 	private static final Logger LOGGER = Logger.getLogger(LoginCommand.class);
@@ -42,7 +41,7 @@ public class LoginCommand implements ServletCommand {
                 c.setMaxAge(COOKIE);
                 response.addCookie(c);
                 }
-            } catch (SQLException e) {
+            } catch (DaoException e) {
             	LOGGER.error(SQLEXCEPTION_AT_LOGIN_USER_ACTION);
             	request.setAttribute(ERROR_MESSAGE, SQLEXCEPTION_AT_LOGIN_USER_ACTION);
             	resultPage = errorPage;

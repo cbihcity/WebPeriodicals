@@ -3,6 +3,7 @@ package by.pvt.heldyieu.command.user;
 import by.pvt.heldyieu.command.ServletCommand;
 import by.pvt.heldyieu.entity.User;
 import by.pvt.heldyieu.entity.UserT;
+import by.pvt.heldyieu.exceptions.DaoException;
 import by.pvt.heldyieu.user.UserServiceImpl;
 import by.pvt.heldyieu.userT.UserTServiceImpl;
 import org.apache.log4j.Logger;
@@ -50,7 +51,7 @@ public class EditUserCommand implements ServletCommand {
 				userServiceImpl.updateUser(user);
 					request.setAttribute(SUCCESS_MESSAGE, USER_EDIT_SUCCESS);
 					resultPage =  sucessPage;
-			} catch (SQLException e) {
+			} catch (DaoException e) {
 					request.setAttribute(ERROR_MESSAGE,
 							SQLEXCEPTION_AT_EDIT_USER_COMMAND);
 					resultPage = errorPage;

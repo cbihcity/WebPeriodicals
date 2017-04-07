@@ -1,12 +1,11 @@
 package by.pvt.heldyieu.magazine;
 
+import by.pvt.heldyieu.exceptions.DaoException;
 import by.pvt.heldyieu.implementation.MagazineDAOImpl;
 import by.pvt.heldyieu.entity.Magazine;
 import by.pvt.heldyieu.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
-import java.sql.SQLException;
 import java.util.List;
 
 public class MagazineServiceImpl implements IMagazineService {
@@ -25,7 +24,7 @@ public class MagazineServiceImpl implements IMagazineService {
 	}
 	
 	@Override
-	public void addMagazine(Magazine magazine) throws Exception {
+	public void addMagazine(Magazine magazine) throws DaoException {
 		Session session = HibernateUtil.getInstance().getSession();
 		Transaction transaction = null;
 		try {
@@ -38,7 +37,7 @@ public class MagazineServiceImpl implements IMagazineService {
     }
 	
 	@Override
-	public Magazine getMagazine(Integer id) throws SQLException {
+	public Magazine getMagazine(Integer id) throws DaoException {
 		Magazine magazine = null;
 		Session session = HibernateUtil.getInstance().getSession();
 		Transaction transaction = null;
@@ -54,7 +53,7 @@ public class MagazineServiceImpl implements IMagazineService {
     }
 	
 	@Override
-	public void updateMagazine(Magazine magazine) throws SQLException {
+	public void updateMagazine(Magazine magazine) throws DaoException {
 		Session session = HibernateUtil.getInstance().getSession();
 		Transaction transaction = null;
 		try {
@@ -68,7 +67,7 @@ public class MagazineServiceImpl implements IMagazineService {
     }
 	
 	@Override
-	public boolean deleteMagazine(Integer id) throws SQLException  {
+	public boolean deleteMagazine(Integer id) throws DaoException  {
 		boolean result = false;
 		Session session = HibernateUtil.getInstance().getSession();
 		Transaction transaction = null;
@@ -85,7 +84,7 @@ public class MagazineServiceImpl implements IMagazineService {
     }
 	
 	@Override
-	public List<Magazine> getAllMagazines() throws SQLException {
+	public List<Magazine> getAllMagazines() throws DaoException {
 		List<Magazine> magazines = null;
 		Session session = HibernateUtil.getInstance().getSession();
 		Transaction transaction = null;
@@ -101,7 +100,7 @@ public class MagazineServiceImpl implements IMagazineService {
     }
 	
 	@Override
-	public Magazine findMagazineByName(String name) throws SQLException {
+	public Magazine findMagazineByName(String name) throws DaoException {
 		return magazineDao.findMagazineByName(name);
     }
 }

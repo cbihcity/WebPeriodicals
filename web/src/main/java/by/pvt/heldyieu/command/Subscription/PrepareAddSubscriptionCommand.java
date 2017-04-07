@@ -3,6 +3,7 @@ package by.pvt.heldyieu.command.Subscription;
 import by.pvt.heldyieu.command.ServletCommand;
 import by.pvt.heldyieu.entity.Magazine;
 import by.pvt.heldyieu.entity.SubscriptionType;
+import by.pvt.heldyieu.exceptions.DaoException;
 import by.pvt.heldyieu.magazine.MagazineServiceImpl;
 import by.pvt.heldyieu.subscription.type.SubscriptionTypeServiceImpl;
 import org.apache.log4j.Logger;
@@ -40,7 +41,7 @@ public class PrepareAddSubscriptionCommand implements ServletCommand {
 				request.setAttribute(MAG, magazine);
 				request.setAttribute(USER, request.getParameter(USER));
 				resultPage = prepareAddSubscriptionPage;
-			} catch (SQLException e) {
+			} catch (DaoException e) {
 					request.setAttribute(ERROR_MESSAGE,
 							SQLEXCEPTION_AT_PREPARE_ADD_SUBSCRIPTION_COMMAND);
 					resultPage = errorPage;

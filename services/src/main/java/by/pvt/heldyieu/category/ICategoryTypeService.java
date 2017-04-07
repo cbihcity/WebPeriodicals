@@ -1,22 +1,20 @@
 package by.pvt.heldyieu.category;
-
 import by.pvt.heldyieu.entity.CategoryType;
-import by.pvt.heldyieu.entity.Magazine;
+import by.pvt.heldyieu.exceptions.DaoException;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public interface ICategoryTypeService {
 	
-	 void addCategoryType(CategoryType categoryType) throws Exception;
+	 void addCategoryType(CategoryType categoryType) throws DaoException;
 	
-	 CategoryType getCategoryType(Integer id) throws SQLException;
+	 CategoryType getCategoryType(Integer id) throws DaoException;
 	
-	 void updateCategoryType(CategoryType categoryType) throws SQLException;
+	 void updateCategoryType(CategoryType categoryType) throws DaoException;
 	
-	 boolean deleteCategoryType(Integer id) throws SQLException;
+	 boolean deleteCategoryType(Integer id) throws DaoException;
 	
-	 List<CategoryType> getAllCategoryType() throws SQLException;
+	 List<CategoryType> getAllCategoryType() throws DaoException;
 
-	 CategoryType findCategoryByName(String name) throws SQLException;
+	 CategoryType findCategoryByName(String name) throws DaoException;
 }

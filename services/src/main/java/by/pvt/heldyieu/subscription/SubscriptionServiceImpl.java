@@ -1,9 +1,8 @@
 package by.pvt.heldyieu.subscription;
 
+import by.pvt.heldyieu.exceptions.DaoException;
 import by.pvt.heldyieu.implementation.SubscriptionDAOImpl;
 import by.pvt.heldyieu.entity.Subscription;
-
-import java.sql.SQLException;
 import java.util.List;
 
 public class SubscriptionServiceImpl implements ISubscriptionService {
@@ -23,31 +22,31 @@ public class SubscriptionServiceImpl implements ISubscriptionService {
 		return INSTANCE;
 	}
 	@Override
-	public Subscription addSubscription(Subscription subscription) throws Exception {
+	public Subscription addSubscription(Subscription subscription) throws DaoException {
 		return subscriptionDao.create(subscription);
     }
 	@Override
-	public Subscription getSubscription(Integer id) throws SQLException {
+	public Subscription getSubscription(Integer id) throws DaoException {
 		return subscriptionDao.readById(id);
     }
 	@Override
-	public void updateSubscription(Subscription subscription) throws SQLException {
+	public void updateSubscription(Subscription subscription) throws DaoException {
 		subscriptionDao.update(subscription);
     }
 	@Override
-	public boolean deleteSubscription(Integer id) throws SQLException {
+	public boolean deleteSubscription(Integer id) throws DaoException {
 		try {
 			return subscriptionDao.delete(id);
-		} catch (Exception e) {
-			throw new SQLException(e);
+		} catch (DaoException e) {
+			throw new DaoException(e.getMessage());
 		}
     }
 	@Override
-	public List<Subscription> getAllSubscriptions() throws SQLException {
+	public List<Subscription> getAllSubscriptions() throws DaoException {
 		return subscriptionDao.getAll();
     }
 	@Override
-	public List<Subscription> findSubscriptionByEmail(String email) throws SQLException {
+	public List<Subscription> findSubscriptionByEmail(String email) throws DaoException {
 		return subscriptionDao.findSubscriptionByUser(email);
     }
 }

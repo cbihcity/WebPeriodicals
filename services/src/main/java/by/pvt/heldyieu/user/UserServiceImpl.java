@@ -1,14 +1,13 @@
 package by.pvt.heldyieu.user;
 
+import by.pvt.heldyieu.exceptions.DaoException;
 import by.pvt.heldyieu.implementation.UserDAOImpl;
 import by.pvt.heldyieu.entity.User;
 import by.pvt.heldyieu.utils.HibernateUtil;
 import org.apache.log4j.Logger;
+import org.hibernate.CacheMode;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.service.spi.ServiceException;
-
-import java.sql.SQLException;
 import java.util.List;
 
 public class UserServiceImpl implements IUserService{
@@ -31,7 +30,7 @@ public class UserServiceImpl implements IUserService{
 		return INSTANCE;
 	}
 	@Override
-	public void addUser(User user) throws SQLException {
+	public void addUser(User user) throws DaoException {
 		LOGGER.info("Try to add new user to database");
 
 		User us = null;
@@ -50,9 +49,10 @@ public class UserServiceImpl implements IUserService{
     }
 
 	@Override
-	public User getUser(Integer id) throws SQLException {
+	public User getUser(Integer id) throws DaoException {
 		User user = null;
 		Session session = HibernateUtil.getInstance().getSession();
+        session.setCacheMode(CacheMode.IGNORE);
 		Transaction transaction = null;
 		try {
 			transaction = session.beginTransaction();
@@ -67,8 +67,9 @@ public class UserServiceImpl implements IUserService{
 		return user;
     }
 	@Override
-	public void updateUser(User user) throws SQLException {
+	public void updateUser(User user) throws DaoException {
 		Session session = HibernateUtil.getInstance().getSession();
+        session.setCacheMode(CacheMode.IGNORE);
 		Transaction transaction = null;
 		try {
 			transaction = session.beginTransaction();
@@ -77,10 +78,11 @@ public class UserServiceImpl implements IUserService{
 		}
 		catch (Exception e) {
 			transaction.rollback();
+            throw new DaoException();
 		}
     }
 	@Override
-	public boolean deleteUser(Integer id) throws SQLException {
+	public boolean deleteUser(Integer id) throws DaoException {
 		boolean result = false;
 		Session session = HibernateUtil.getInstance().getSession();
 		Transaction transaction = null;
@@ -97,9 +99,10 @@ public class UserServiceImpl implements IUserService{
     }
 
 	@Override
-	public List<User> getAllUsers() throws SQLException {
+	public List<User> getAllUsers() throws DaoException {
         List<User> users = null;
         Session session = HibernateUtil.getInstance().getSession();
+        session.setCacheMode(CacheMode.IGNORE);
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
@@ -109,10 +112,12 @@ public class UserServiceImpl implements IUserService{
         catch (Exception e) {
             transaction.rollback();
         }
+        HibernateUtil.getInstance().releaseSession(session);
+
         return users;
     }
 	@Override
-	public User findUserByEmail(String email, String pass) throws SQLException {
+	public User findUserByEmail(String email, String pass) throws DaoException {
 		LOGGER.info("Try to find user by email");
 		User user = null;
 		Session session = HibernateUtil.getInstance().getSession();

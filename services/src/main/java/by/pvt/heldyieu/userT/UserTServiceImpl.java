@@ -2,6 +2,7 @@ package by.pvt.heldyieu.userT;
 
 import by.pvt.heldyieu.entity.User;
 import by.pvt.heldyieu.entity.UserT;
+import by.pvt.heldyieu.exceptions.DaoException;
 import by.pvt.heldyieu.implementation.UserTDAOImpl;
 import by.pvt.heldyieu.utils.HibernateUtil;
 import org.apache.log4j.Logger;
@@ -30,7 +31,7 @@ public class UserTServiceImpl implements IUserTService {
 		return INSTANCE;
 	}
 	@Override
-	public void addUserT(UserT userT) throws SQLException {
+	public void addUserT(UserT userT) throws DaoException {
 		LOGGER.info("Try to add new user to database");
 
 		Session session = HibernateUtil.getInstance().getSession();
@@ -45,7 +46,7 @@ public class UserTServiceImpl implements IUserTService {
     }
 
 	@Override
-	public UserT getUserT(Integer id) throws SQLException {
+	public UserT getUserT(Integer id) throws DaoException {
 		UserT userT = null;
 		Session session = HibernateUtil.getInstance().getSession();
 		Transaction transaction = null;
@@ -61,7 +62,7 @@ public class UserTServiceImpl implements IUserTService {
 		return userT;
     }
 	@Override
-	public void updateUserT(UserT userT) throws SQLException {
+	public void updateUserT(UserT userT) throws DaoException {
 		Session session = HibernateUtil.getInstance().getSession();
 		Transaction transaction = null;
 		try {
@@ -74,7 +75,7 @@ public class UserTServiceImpl implements IUserTService {
 		}
     }
 	@Override
-	public boolean deleteUserT(Integer id) throws SQLException {
+	public boolean deleteUserT(Integer id) throws DaoException {
 		boolean result = false;
 		Session session = HibernateUtil.getInstance().getSession();
 		Transaction transaction = null;
@@ -91,7 +92,7 @@ public class UserTServiceImpl implements IUserTService {
     }
 
 	@Override
-	public List<UserT> getAllUsersT() throws SQLException {
+	public List<UserT> getAllUsersT() throws DaoException {
         List<UserT> users = null;
         Session session = HibernateUtil.getInstance().getSession();
         Transaction transaction = null;

@@ -1,17 +1,19 @@
 package by.pvt.heldyieu.entity;
 
 import by.pvt.heldyieu.interfaces.Identified;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "magazines")
-@Cacheable(false)
-public class Magazine implements Identified {
+public class Magazine implements Identified, Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
 	private Integer id;
 
     @Column(name = "name")

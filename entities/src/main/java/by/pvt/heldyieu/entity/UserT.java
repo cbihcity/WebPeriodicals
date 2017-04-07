@@ -1,10 +1,13 @@
 package by.pvt.heldyieu.entity;
 
 import by.pvt.heldyieu.interfaces.Identified;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -12,12 +15,12 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "users_type")
-@Cacheable(false)
+@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
 public class UserT implements Identified, Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
     private Integer id;
 
     @Column(name = "type")
@@ -25,6 +28,13 @@ public class UserT implements Identified, Serializable {
 
     @OneToMany(mappedBy = "userT")
     private Set<User> users;
+    public Set<User> getUsers() {
+        return users;
+    }
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
 
     public UserT() {
     }
@@ -52,25 +62,22 @@ public class UserT implements Identified, Serializable {
         this.type = type;
     }
 
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof UserT)) return false;
+
         UserT userT = (UserT) o;
-        return Objects.equals(id, userT.id) &&
-                Objects.equals(type, userT.type);
+
+        if (getId() != null ? !getId().equals(userT.getId()) : userT.getId() != null) return false;
+        if (getType() != null ? !getType().equals(userT.getType()) : userT.getType() != null) return false;
+        return getUsers() != null ? getUsers().equals(userT.getUsers()) : userT.getUsers() == null;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, type);
+        int result = getId() != null ? getId().hashCode() : 0;
+        result = 31 * result + (getType() != null ? getType().hashCode() : 0);
+        return result;
     }
 }

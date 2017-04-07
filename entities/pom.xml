@@ -42,5 +42,10 @@
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-entitymanager</artifactId>
     </dependency>
+      <dependency>
+          <groupId>by.pvt.heldyieu.webPeriodicals</groupId>
+          <artifactId>dao</artifactId>
+          <version>1.0-SNAPSHOT</version>
+      </dependency>
   </dependencies>
 </project>

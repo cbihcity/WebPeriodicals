@@ -1,11 +1,13 @@
 package by.pvt.heldyieu;
 
+import by.pvt.heldyieu.exceptions.DaoException;
 import by.pvt.heldyieu.interfaces.Constants;
 import by.pvt.heldyieu.interfaces.GenericDAO;
 import by.pvt.heldyieu.interfaces.Identified;
 import by.pvt.heldyieu.utils.HibernateUtil;
 import org.apache.log4j.Logger;
 
+import org.hibernate.CacheMode;
 import org.hibernate.Criteria;
 
 import org.hibernate.HibernateException;
@@ -30,7 +32,7 @@ public abstract class AbstractDAO<T extends Identified, PK extends Number> imple
     }
 	
     @Override
-    public T create(T object) throws Exception {
+    public T create(T object) throws DaoException {
         LOGGER.info("Try to create new user in USER database");
         try {
 
@@ -38,14 +40,14 @@ public abstract class AbstractDAO<T extends Identified, PK extends Number> imple
             session.saveOrUpdate(object);
         }
         catch(HibernateException e) {
-
+            throw new DaoException();
         }
 
         return object;
     }
 
     @Override
-    public T readById(Number key) throws SQLException {
+    public T readById(Number key) throws DaoException {
     	LOGGER.info("Find object by id and return it");
     	
         T tempEntity = null;
@@ -55,23 +57,26 @@ public abstract class AbstractDAO<T extends Identified, PK extends Number> imple
         }
         catch(HibernateException e){
             LOGGER.error("Error was thrown in DAO: " + e);
+            throw new DaoException();
         }
         return tempEntity;
     }
 
     @Override
-    public void update(T object) throws SQLException {
+    public void update(T object) throws DaoException {
         try {
             Session session = util.getSession();
+            session.setCacheMode(CacheMode.IGNORE);
             session.update(object);
         }
         catch(HibernateException e) {
             LOGGER.error("Error was thrown in DAO: " + e);
+            throw new DaoException();
         }
     }
 
     @Override
-    public boolean delete(Number key) throws SQLException {
+    public boolean delete(Number key) throws DaoException {
     	boolean result = false;
         try {
             Session session = util.getSession();
@@ -82,6 +87,7 @@ public abstract class AbstractDAO<T extends Identified, PK extends Number> imple
         catch(HibernateException e){
             //TODO исправить
             LOGGER.error("Error was thrown in DAO: " + e);
+            throw new DaoException();
         }
         catch(IllegalArgumentException e){
             LOGGER.error("Error was thrown in DAO: " + e);
@@ -90,15 +96,17 @@ public abstract class AbstractDAO<T extends Identified, PK extends Number> imple
     }
 
     @Override
-    public List<T> getAll() {
+    public List<T> getAll() throws DaoException{
         List<T> list = new ArrayList<T>();
         try {
             Session session = util.getSession();
+            session.setCacheMode(CacheMode.IGNORE);
             Criteria criteria = session.createCriteria(persistentClass);
             list = criteria.list();
         }
         catch(HibernateException e){
             LOGGER.error("Error was thrown in DAO: " + e);
+            throw new DaoException();
         }
 		return list;
     }

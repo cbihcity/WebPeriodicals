@@ -1,21 +1,21 @@
 package by.pvt.heldyieu.magazine;
 
 import by.pvt.heldyieu.entity.Magazine;
+import by.pvt.heldyieu.exceptions.DaoException;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public interface IMagazineService {
 	
-	 void addMagazine(Magazine magazine) throws Exception;
+	 void addMagazine(Magazine magazine) throws DaoException;
 	
-	 Magazine getMagazine(Integer id) throws SQLException;
+	 Magazine getMagazine(Integer id) throws DaoException;
 	
-	 void updateMagazine(Magazine magazine) throws SQLException;
+	 void updateMagazine(Magazine magazine) throws DaoException;
 	
-	 boolean deleteMagazine(Integer id) throws SQLException;
+	 boolean deleteMagazine(Integer id) throws DaoException;
 	
-	 List<Magazine> getAllMagazines() throws SQLException;
+	 List<Magazine> getAllMagazines() throws DaoException;
 	
-	 Magazine findMagazineByName(String name) throws SQLException;
+	 Magazine findMagazineByName(String name) throws DaoException;
 }

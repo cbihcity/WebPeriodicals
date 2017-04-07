@@ -2,12 +2,12 @@ package by.pvt.heldyieu.command.user;
 
 import by.pvt.heldyieu.command.ServletCommand;
 import by.pvt.heldyieu.entity.User;
+import by.pvt.heldyieu.exceptions.DaoException;
 import by.pvt.heldyieu.user.UserServiceImpl;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class GetUsersListCommand implements ServletCommand {
 					request.setAttribute(LIST, listOfUsers);
 					resultPage =  usersPage;
 				}
-			} catch (SQLException e) {
+			} catch (DaoException e) {
 				LOGGER.error(SQLEXCEPTION_AT_GET_USERS_LIST_COMMAND);
 	        	request.setAttribute(ERROR_MESSAGE, SQLEXCEPTION_AT_GET_USERS_LIST_COMMAND);
 	        	resultPage =  errorPage;

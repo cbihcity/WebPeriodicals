@@ -1,6 +1,7 @@
 package by.pvt.heldyieu.filters;
 
 import by.pvt.heldyieu.entity.User;
+import by.pvt.heldyieu.exceptions.DaoException;
 import by.pvt.heldyieu.user.UserServiceImpl;
 import org.apache.log4j.Logger;
 
@@ -9,7 +10,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class ConfigFilter implements Filter {
 	private static final Logger LOGGER = Logger.getLogger(ConfigFilter.class);
@@ -39,7 +39,7 @@ public class ConfigFilter implements Filter {
 							User user = UserServiceImpl.getInstance().getUser(
 									Integer.parseInt(c.getValue()));
 							session.setAttribute("user", user);
-						} catch (SQLException e) {
+						} catch (DaoException e) {
 							LOGGER.error(e.getMessage());
 						}
 					}

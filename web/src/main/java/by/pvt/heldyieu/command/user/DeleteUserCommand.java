@@ -1,6 +1,7 @@
 package by.pvt.heldyieu.command.user;
 
 import by.pvt.heldyieu.command.ServletCommand;
+import by.pvt.heldyieu.exceptions.DaoException;
 import by.pvt.heldyieu.user.UserServiceImpl;
 import org.apache.log4j.Logger;
 
@@ -33,7 +34,7 @@ public class DeleteUserCommand implements ServletCommand {
 				} catch (NumberFormatException e) {
 					request.setAttribute(ERROR_MESSAGE, NUMBER_FORMAT_EXCEPTION_AT_DELETE_USER_COMMAND);
 					resultPage =  errorPage;
-				} catch (SQLException e) {
+				} catch (DaoException e) {
 					request.setAttribute(ERROR_MESSAGE,
 							SQLEXCEPTION_AT_DELETE_USER_COMMAND);
 					resultPage = errorPage;

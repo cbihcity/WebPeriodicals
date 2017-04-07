@@ -1,5 +1,6 @@
 package by.pvt.heldyieu.subscription.type;
 
+import by.pvt.heldyieu.exceptions.DaoException;
 import by.pvt.heldyieu.implementation.SubscriptionTypeDAOImpl;
 import by.pvt.heldyieu.entity.SubscriptionType;
 import org.apache.log4j.Logger;
@@ -27,36 +28,36 @@ public class SubscriptionTypeServiceImpl implements ISubscriptionTypeService{
 		return INSTANCE;
 	}
 	@Override
-	public SubscriptionType addSubscriptionType(SubscriptionType subscriptionType) throws Exception {
+	public SubscriptionType addSubscriptionType(SubscriptionType subscriptionType) throws DaoException {
 		LOGGER.info("Try to add new SubscriptionType to database");
 		return subscriptionTypeDao.create(subscriptionType);
     }
 	@Override
-	public SubscriptionType getSubscriptionType(Integer id) throws SQLException {
+	public SubscriptionType getSubscriptionType(Integer id) throws DaoException {
 		LOGGER.info("Try to get SubscriptionType by Id");
 		return subscriptionTypeDao.readById(id);
     }
 	@Override
-	public void updateSubscriptionType(SubscriptionType subscriptionType) throws SQLException {
+	public void updateSubscriptionType(SubscriptionType subscriptionType) throws DaoException {
 		LOGGER.info("Try to update SubscriptionType");
 		subscriptionTypeDao.update(subscriptionType);
     }
 	@Override
-	public boolean deleteSubscriptionType(Integer id) throws SQLException {
+	public boolean deleteSubscriptionType(Integer id) throws DaoException {
 		LOGGER.info("Try to delete SubscriptionType");
 		try {
 			return subscriptionTypeDao.delete(id);
-		} catch (Exception e) {
-			throw new SQLException(e);
+		} catch (DaoException e) {
+			throw new DaoException(e.getMessage());
 		}
     }
 	@Override
-	public List<SubscriptionType> getAllSubscriptionTypes() throws SQLException {
+	public List<SubscriptionType> getAllSubscriptionTypes() throws DaoException {
 		LOGGER.info("Try to get all SubscriptionTypes");
 		return subscriptionTypeDao.getAll();
     }
 	@Override
-	public SubscriptionType findSubscriptionTypeByName(String name) throws SQLException {
+	public SubscriptionType findSubscriptionTypeByName(String name) throws DaoException {
 		LOGGER.info("Try to find SubscriptionType by name");
 		return subscriptionTypeDao.findSubscriptionTypeByName(name);
     }

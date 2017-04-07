@@ -5,6 +5,7 @@ import by.pvt.heldyieu.entity.Magazine;
 import by.pvt.heldyieu.entity.Subscription;
 import by.pvt.heldyieu.entity.SubscriptionType;
 import by.pvt.heldyieu.entity.User;
+import by.pvt.heldyieu.exceptions.DaoException;
 import by.pvt.heldyieu.magazine.MagazineServiceImpl;
 import by.pvt.heldyieu.subscription.SubscriptionServiceImpl;
 import by.pvt.heldyieu.subscription.type.SubscriptionTypeServiceImpl;
@@ -42,7 +43,7 @@ public class AddSubscriptionCommand implements ServletCommand {
 				SubscriptionServiceImpl.getInstance().addSubscription(subscription);
 				request.setAttribute(SUCCESS_MESSAGE, SUBSCRIPTION_ADD_SUCCESS);
 				resultPage = sucessPage;
-			} catch (SQLException e) {
+			} catch (DaoException e) {
 				LOGGER.error(SQLEXCEPTION_AT_ADD_SUBSCRIPTION_COMMAND);
 				request.setAttribute(ERROR_MESSAGE,
 						SQLEXCEPTION_AT_ADD_SUBSCRIPTION_COMMAND);
