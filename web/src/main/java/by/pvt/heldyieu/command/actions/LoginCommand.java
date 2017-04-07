@@ -2,9 +2,10 @@ package by.pvt.heldyieu.command.actions;
 
 import by.pvt.heldyieu.command.ServletCommand;
 import by.pvt.heldyieu.entity.User;
-import by.pvt.heldyieu.exceptions.DaoException;
+import by.pvt.heldyieu.exception.DaoException;
 import by.pvt.heldyieu.user.UserServiceImpl;
 import org.apache.log4j.Logger;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

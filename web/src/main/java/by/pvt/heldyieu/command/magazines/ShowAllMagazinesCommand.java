@@ -2,13 +2,12 @@ package by.pvt.heldyieu.command.magazines;
 
 import by.pvt.heldyieu.command.ServletCommand;
 import by.pvt.heldyieu.entity.Magazine;
-import by.pvt.heldyieu.exceptions.DaoException;
+import by.pvt.heldyieu.exception.DaoException;
 import by.pvt.heldyieu.magazine.MagazineServiceImpl;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 

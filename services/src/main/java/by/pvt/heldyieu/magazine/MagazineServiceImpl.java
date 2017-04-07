@@ -1,11 +1,12 @@
 package by.pvt.heldyieu.magazine;
 
-import by.pvt.heldyieu.exceptions.DaoException;
-import by.pvt.heldyieu.implementation.MagazineDAOImpl;
 import by.pvt.heldyieu.entity.Magazine;
+import by.pvt.heldyieu.exception.DaoException;
+import by.pvt.heldyieu.implementation.MagazineDAOImpl;
 import by.pvt.heldyieu.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
 import java.util.List;
 
 public class MagazineServiceImpl implements IMagazineService {

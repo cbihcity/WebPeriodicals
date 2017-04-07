@@ -1,14 +1,13 @@
 package by.pvt.heldyieu.userT;
 
-import by.pvt.heldyieu.entity.User;
 import by.pvt.heldyieu.entity.UserT;
-import by.pvt.heldyieu.exceptions.DaoException;
+import by.pvt.heldyieu.exception.DaoException;
 import by.pvt.heldyieu.implementation.UserTDAOImpl;
 import by.pvt.heldyieu.utils.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import java.sql.SQLException;
+
 import java.util.List;
 
 public class UserTServiceImpl implements IUserTService {

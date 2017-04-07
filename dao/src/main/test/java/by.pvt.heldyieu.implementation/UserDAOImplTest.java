@@ -1,8 +1,5 @@
 package by.pvt.heldyieu.implementation;
 
-import by.pvt.heldyieu.entity.User;
-import org.junit.*;
-
 public class UserDAOImplTest {
 
     @Test

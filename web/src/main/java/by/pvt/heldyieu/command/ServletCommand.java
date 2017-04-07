@@ -1,7 +1,7 @@
 package by.pvt.heldyieu.command;
 
-import by.pvt.heldyieu.interfaces.Constants;
 import by.pvt.heldyieu.ResourceManager;
+import by.pvt.heldyieu.interfaces.Constants;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

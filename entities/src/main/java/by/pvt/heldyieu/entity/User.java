@@ -1,12 +1,9 @@
 package by.pvt.heldyieu.entity;
 
 import by.pvt.heldyieu.interfaces.Identified;
-import org.hibernate.annotations.*;
-import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity

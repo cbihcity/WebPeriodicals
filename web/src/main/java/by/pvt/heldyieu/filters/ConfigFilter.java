@@ -1,7 +1,7 @@
 package by.pvt.heldyieu.filters;
 
 import by.pvt.heldyieu.entity.User;
-import by.pvt.heldyieu.exceptions.DaoException;
+import by.pvt.heldyieu.exception.DaoException;
 import by.pvt.heldyieu.user.UserServiceImpl;
 import org.apache.log4j.Logger;
 

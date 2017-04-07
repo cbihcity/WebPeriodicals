@@ -1,4 +1,4 @@
-package by.pvt.heldyieu.exceptions;
+package by.pvt.heldyieu.exception;
 
 
 public class DaoException extends Exception {

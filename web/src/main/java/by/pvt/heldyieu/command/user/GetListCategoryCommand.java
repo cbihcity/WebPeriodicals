@@ -3,12 +3,11 @@ package by.pvt.heldyieu.command.user;
 import by.pvt.heldyieu.category.CategoryTypeServiceImpl;
 import by.pvt.heldyieu.command.ServletCommand;
 import by.pvt.heldyieu.entity.CategoryType;
-import by.pvt.heldyieu.exceptions.DaoException;
+import by.pvt.heldyieu.exception.DaoException;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.SQLException;
 import java.util.List;
 
 public class GetListCategoryCommand implements ServletCommand {

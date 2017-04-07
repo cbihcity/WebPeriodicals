@@ -1,11 +1,10 @@
 package by.pvt.heldyieu.subscription.type;
 
-import by.pvt.heldyieu.exceptions.DaoException;
-import by.pvt.heldyieu.implementation.SubscriptionTypeDAOImpl;
 import by.pvt.heldyieu.entity.SubscriptionType;
+import by.pvt.heldyieu.exception.DaoException;
+import by.pvt.heldyieu.implementation.SubscriptionTypeDAOImpl;
 import org.apache.log4j.Logger;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class SubscriptionTypeServiceImpl implements ISubscriptionTypeService{

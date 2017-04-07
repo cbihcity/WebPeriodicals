@@ -1,7 +1,7 @@
 package by.pvt.heldyieu.magazine;
 
 import by.pvt.heldyieu.entity.Magazine;
-import by.pvt.heldyieu.exceptions.DaoException;
+import by.pvt.heldyieu.exception.DaoException;
 
 import java.util.List;
 

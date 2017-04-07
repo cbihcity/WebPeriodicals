@@ -1,7 +1,8 @@
 package by.pvt.heldyieu.subscription;
 
 import by.pvt.heldyieu.entity.Subscription;
-import by.pvt.heldyieu.exceptions.DaoException;
+import by.pvt.heldyieu.exception.DaoException;
+
 import java.util.List;
 
 public interface ISubscriptionService {

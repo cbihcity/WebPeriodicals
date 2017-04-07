@@ -1,7 +1,8 @@
 package by.pvt.heldyieu;
 
-import java.util.ResourceBundle;
 import by.pvt.heldyieu.interfaces.Constants;
+
+import java.util.ResourceBundle;
 
 public class ResourceManager implements Constants {
 	private ResourceBundle resourceBundle;

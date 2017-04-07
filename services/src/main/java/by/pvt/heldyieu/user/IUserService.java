@@ -1,7 +1,8 @@
 package by.pvt.heldyieu.user;
 
 import by.pvt.heldyieu.entity.User;
-import by.pvt.heldyieu.exceptions.DaoException;
+import by.pvt.heldyieu.exception.DaoException;
+
 import java.util.List;
 
 public interface IUserService {

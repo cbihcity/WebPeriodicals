@@ -1,9 +1,8 @@
 package by.pvt.heldyieu.subscription.type;
 
 import by.pvt.heldyieu.entity.SubscriptionType;
-import by.pvt.heldyieu.exceptions.DaoException;
+import by.pvt.heldyieu.exception.DaoException;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public interface ISubscriptionTypeService {

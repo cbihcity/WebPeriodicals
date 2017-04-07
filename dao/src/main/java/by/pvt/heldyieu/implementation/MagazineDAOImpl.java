@@ -1,9 +1,9 @@
 package by.pvt.heldyieu.implementation;
 
 import by.pvt.heldyieu.AbstractDAO;
-import by.pvt.heldyieu.factory.DaoFactory;
 import by.pvt.heldyieu.entity.Magazine;
 import by.pvt.heldyieu.exception.InvalidValueException;
+import by.pvt.heldyieu.factory.DaoFactory;
 import org.apache.log4j.Logger;
 
 public class MagazineDAOImpl extends AbstractDAO<Magazine, Integer> {

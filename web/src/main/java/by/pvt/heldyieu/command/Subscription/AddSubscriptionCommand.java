@@ -5,7 +5,7 @@ import by.pvt.heldyieu.entity.Magazine;
 import by.pvt.heldyieu.entity.Subscription;
 import by.pvt.heldyieu.entity.SubscriptionType;
 import by.pvt.heldyieu.entity.User;
-import by.pvt.heldyieu.exceptions.DaoException;
+import by.pvt.heldyieu.exception.DaoException;
 import by.pvt.heldyieu.magazine.MagazineServiceImpl;
 import by.pvt.heldyieu.subscription.SubscriptionServiceImpl;
 import by.pvt.heldyieu.subscription.type.SubscriptionTypeServiceImpl;
@@ -14,7 +14,6 @@ import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.SQLException;
 import java.util.Date;
 
 public class AddSubscriptionCommand implements ServletCommand {

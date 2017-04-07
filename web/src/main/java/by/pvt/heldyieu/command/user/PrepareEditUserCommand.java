@@ -3,7 +3,7 @@ package by.pvt.heldyieu.command.user;
 import by.pvt.heldyieu.command.ServletCommand;
 import by.pvt.heldyieu.entity.User;
 import by.pvt.heldyieu.entity.UserT;
-import by.pvt.heldyieu.exceptions.DaoException;
+import by.pvt.heldyieu.exception.DaoException;
 import by.pvt.heldyieu.user.UserServiceImpl;
 import by.pvt.heldyieu.userT.UserTServiceImpl;
 import org.apache.log4j.Logger;

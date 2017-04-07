@@ -1,11 +1,12 @@
 package by.pvt.heldyieu.category;
 
 import by.pvt.heldyieu.entity.CategoryType;
-import by.pvt.heldyieu.exceptions.DaoException;
+import by.pvt.heldyieu.exception.DaoException;
 import by.pvt.heldyieu.implementation.CategoryTypeDAOImpl;
 import by.pvt.heldyieu.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
 import java.util.List;
 
 public class CategoryTypeServiceImpl implements ICategoryTypeService {

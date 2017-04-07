@@ -1,6 +1,6 @@
 package by.pvt.heldyieu.category;
 import by.pvt.heldyieu.entity.CategoryType;
-import by.pvt.heldyieu.exceptions.DaoException;
+import by.pvt.heldyieu.exception.DaoException;
 
 import java.util.List;
 

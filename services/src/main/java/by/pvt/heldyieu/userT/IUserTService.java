@@ -1,7 +1,7 @@
 package by.pvt.heldyieu.userT;
 
 import by.pvt.heldyieu.entity.UserT;
-import by.pvt.heldyieu.exceptions.DaoException;
+import by.pvt.heldyieu.exception.DaoException;
 
 import java.util.List;
 
