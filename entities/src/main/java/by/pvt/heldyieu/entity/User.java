@@ -1,6 +1,5 @@
 package by.pvt.heldyieu.entity;
 
-import by.pvt.heldyieu.enums.UserType;
 import by.pvt.heldyieu.interfaces.Identified;
 import javax.persistence.*;
 import java.io.Serializable;
@@ -30,9 +29,9 @@ public class User implements Identified, Serializable{
 	    private String password;
 
 
-	    @Column(name = "user_type_id", updatable = true)
-        @Enumerated(EnumType.ORDINAL)
-	    private UserType userType;
+	    @ManyToOne
+        @JoinColumn(name = "user_type_id")
+        private UserT userT;
 
 
 
@@ -40,19 +39,18 @@ public class User implements Identified, Serializable{
 	}
 
 
-    public User(String firstName, String lastName, String email, String password, UserType type) {
+    public User(String firstName, String lastName, String email, String password, UserT userT) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.userType = type;
+        this.userT = userT;
     }
 
     @Override
     public Integer getId() {
         return id;
     }
-
 
     @Override
     public void setId(Integer id) {
@@ -91,12 +89,12 @@ public class User implements Identified, Serializable{
         this.password = password;
     }
 
-    public UserType getUserType() {
-        return userType;
+    public UserT getUserT() {
+        return userT;
     }
 
-    public void setUserType(UserType type) {
-        this.userType = type;
+    public void setUserT(UserT userT) {
+        this.userT = userT;
     }
 
     @Override
@@ -108,12 +106,11 @@ public class User implements Identified, Serializable{
                 Objects.equals(firstName, user.firstName) &&
                 Objects.equals(lastName, user.lastName) &&
                 Objects.equals(email, user.email) &&
-                Objects.equals(password, user.password) &&
-                userType == user.userType;
+                Objects.equals(password, user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email, password, userType);
+        return Objects.hash(id, firstName, lastName, email, password);
     }
 }

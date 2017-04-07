@@ -28,7 +28,7 @@
                                     <%@include file="/jsp/menu.jsp" %>
                                 </div><!-- end of menu -->
                             </td>
-                        <c:if test="${sessionScope.user.userType == 'ADMIN'}">
+                        <c:if test="${sessionScope.user.userT.type == 'ADMIN'}">
 						<td class="right_content">
                                     <div class="add_mag">
                                     	<h1><fmt:message key="editUser.form"/></h1>
@@ -51,9 +51,10 @@
                                                     <td><fmt:message key="addMag.category"/></td>
                                                     <td>
                                                     <select name="category">
-                                              		<c:forEach begin="0" end="${fn:length(requestScope.list)-1}" var="type">
-                                                    <option value="${list[type]}">${list[type]}</option>
-                                                    </c:forEach> 
+                                                        <c:forEach var="type" items="${requestScope.list}">
+                                                            <option value="${type.type}">${type.type}</option>
+                                                        </c:forEach>
+                                                    </select>
                                                     </select>
                                                     </td>
                                                 </tr>

@@ -41,7 +41,7 @@
 												<td>${mag.name}</td>
 												<td>${mag.type}</td>
 												<td>${mag.price}</td>
-												<c:if test="${sessionScope.user.userType == 'ADMIN'}">
+												<c:if test="${sessionScope.user.userT.type == 'ADMIN'}">
 												<td>
 													<form action="act" method="post">
                                                     <input type="hidden" name="command" value="delMag" />  
@@ -57,7 +57,7 @@
                                                 	</form> 
 												</td>
 												</c:if>
-												<c:if test="${sessionScope.user.userType == 'USER'}">
+												<c:if test="${sessionScope.user.userT.type == 'USER'}">
 												<td>
 													<form action="act" method="post">
                                                     <input type="hidden" name="command" value="prepareAddSub" />  

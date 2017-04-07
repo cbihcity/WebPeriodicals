@@ -2,13 +2,15 @@ package by.pvt.heldyieu.command.user;
 
 import by.pvt.heldyieu.command.ServletCommand;
 import by.pvt.heldyieu.entity.User;
-import by.pvt.heldyieu.enums.UserType;
+import by.pvt.heldyieu.entity.UserT;
 import by.pvt.heldyieu.user.UserServiceImpl;
+import by.pvt.heldyieu.userT.UserTServiceImpl;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
+import java.util.List;
 
 public class EditUserCommand implements ServletCommand {
 
@@ -34,10 +36,15 @@ public class EditUserCommand implements ServletCommand {
 				&& !request.getParameter(PASSWORD).equals("")) {
 			try {
 				User user  = new User();
+				List<UserT> userTlist = UserTServiceImpl.getInstance().getAllUsersT();
+				for (UserT userT : userTlist){
+					if (userT.getType().equals(request.getParameter(CATEGORY))){
+						user.setUserT(userT);
+					}
+				}
 				user.setId(Integer.valueOf(request.getParameter(USER_ID)));
 				user.setFirstName(request.getParameter(FIRST_NAME));
 				user.setLastName(request.getParameter(LAST_NAME));
-				user.setUserType(UserType.valueOf(request.getParameter(CATEGORY)));
 				user.setEmail(request.getParameter(EMAIL));
 				user.setPassword(request.getParameter(PASSWORD));
 				userServiceImpl.updateUser(user);

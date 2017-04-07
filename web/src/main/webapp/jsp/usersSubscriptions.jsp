@@ -49,7 +49,7 @@
 											<td>${sub.startDate}</td>
 											<td>${sub.endDate}</td>
 											<td>${sub.price}</td>
-											<c:if test="${sessionScope.user.userType == 'ADMIN'}">
+											<c:if test="${sessionScope.user.userT.type == 'ADMIN'}">
 												<td>
 													<form action="act" method="post">
 														<input type="hidden" name="command" value="delSub" /> 

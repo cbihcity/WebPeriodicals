@@ -21,7 +21,7 @@
         <property name="cache.use_second_level_cache">true</property>
 
         <mapping class="by.pvt.heldyieu.entity.User"/>
-        <!--<mapping class="by.pvt.heldyieu.entity.Type"/>-->
+        <mapping class="by.pvt.heldyieu.entity.UserT"/>
         <!--<mapping class="by.pvt.khudnitsky.payments.entities.Account"/>-->
         <!--<mapping class="by.pvt.khudnitsky.payments.entities.Operation"/>-->
         <!--<mapping class="by.pvt.khudnitsky.payments.entities.UserDetail"/>-->

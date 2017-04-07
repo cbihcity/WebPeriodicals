@@ -2,8 +2,9 @@ package by.pvt.heldyieu.command.user;
 
 import by.pvt.heldyieu.command.ServletCommand;
 import by.pvt.heldyieu.entity.User;
-import by.pvt.heldyieu.enums.UserType;
+import by.pvt.heldyieu.entity.UserT;
 import by.pvt.heldyieu.user.UserServiceImpl;
+import by.pvt.heldyieu.userT.UserTServiceImpl;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,12 +20,18 @@ public class AddUserCommand implements ServletCommand {
     
 	@Override
 	public String execute(HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response){
 		String first_name = request.getParameter(FIRSTNAME);
 		String last_name = request.getParameter(LASTNAME);
 		String email = request.getParameter(EMAIL);
 		String pass = request.getParameter(PASS);
 		User user = new User();
+		UserT userT = null;
+		try {
+			userT = UserTServiceImpl.getInstance().getUserT(2);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		if ( !first_name.equals("")
 				&& !last_name.equals("")
 				&& !email.equals("")
@@ -33,7 +40,7 @@ public class AddUserCommand implements ServletCommand {
 			user.setLastName(last_name);
 			user.setEmail(email);
 			user.setPassword(pass);
-			user.setUserType(UserType.USER);
+			user.setUserT(userT);
 			try {
 				UserServiceImpl.getInstance().addUser(user);
 			request.setAttribute(SUCCESS_MESSAGE, USER_ADD_SUCCESS);

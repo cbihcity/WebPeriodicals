@@ -24,6 +24,8 @@ public class DaoFactory implements Constants {
 			return new SubscriptionDAOImpl();
 		case SUBSCRIPTION_TYPE_DAO:
 			return new SubscriptionTypeDAOImpl();
+			case "userTDao":
+				return new UserTDAOImpl();
 			default:
 				throw new InvalidValueException(INVALID_PARSER_PARAMETER, daoImpl); 
 		}

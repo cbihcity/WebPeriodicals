@@ -27,7 +27,7 @@
 								<%@include file="/jsp/menu.jsp"%>
 							</div> <!-- end of menu -->
 						</td>
-						<c:if test="${sessionScope.user.userType == 'ADMIN'}">
+						<c:if test="${sessionScope.user.userT.type == 'ADMIN'}">
 						<td class="right_content">
 							<div class="Index">
 							<h1><fmt:message key="users.list"/>:</h1>
@@ -42,7 +42,7 @@
 											<tr>
 												<td>${user.firstName}</td>
 												<td>${user.lastName}</td>
-												<td>${user.userType}</td>
+												<td>${user.userT.type}</td>
 												<td>${user.email}</td>
 												<td>
 													<form action="act" method="post">

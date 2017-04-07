@@ -22,7 +22,7 @@
 							</form>
 						</td>
 					</tr>
-					<c:if test="${sessionScope.user.userType == 'USER'}">
+					<c:if test="${sessionScope.user.userT.type == 'USER'}">
 					<tr>
 						<td>
 							<form action="act" method="post">
@@ -35,7 +35,7 @@
 					</c:if>
 				</c:when>
 			</c:choose>
-			<c:if test="${sessionScope.user.userType == 'ADMIN'}">
+			<c:if test="${sessionScope.user.userT.type == 'ADMIN'}">
 				<tr>
 					<td style="font-size: 10px; text-align: center">-<fmt:message key="text.AdminPanel"/>-
 					</td>

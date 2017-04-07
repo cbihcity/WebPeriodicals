@@ -28,7 +28,7 @@
 							</div> <!-- end of menu -->
 						</td>
 						<td class="right_content">
-						<c:if test="${sessionScope.user.userType == 'ADMIN'}">
+						<c:if test="${sessionScope.user.userT.type == 'ADMIN'}">
 							<div class="Index">
 							<h1><fmt:message key="subsciptionType.list"/>:</h1>
 									<table class="Table">

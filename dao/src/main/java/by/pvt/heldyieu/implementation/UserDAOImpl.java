@@ -3,18 +3,11 @@ package by.pvt.heldyieu.implementation;
 import by.pvt.heldyieu.AbstractDAO;
 import by.pvt.heldyieu.factory.DaoFactory;
 import by.pvt.heldyieu.entity.User;
-import by.pvt.heldyieu.enums.UserType;
 import by.pvt.heldyieu.exception.InvalidValueException;
 import by.pvt.heldyieu.utils.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
-
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class UserDAOImpl extends AbstractDAO<User, Integer> {
 	private static final Logger LOGGER = Logger.getLogger(UserDAOImpl.class);

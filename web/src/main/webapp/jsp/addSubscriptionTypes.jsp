@@ -29,7 +29,7 @@
                                     <%@include file="/jsp/menu.jsp" %>
                                 </div><!-- end of menu -->
                             </td>
-                        <c:if test="${sessionScope.user.userType == 'ADMIN'}">
+                        <c:if test="${sessionScope.user.userT.type == 'ADMIN'}">
 						<td class="right_content">
 							<div class="Index">
                                     <div class="add_mag">

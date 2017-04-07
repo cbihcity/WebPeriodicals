@@ -1,7 +1,6 @@
 package by.pvt.heldyieu.implementation;
 
 import by.pvt.heldyieu.entity.User;
-import by.pvt.heldyieu.enums.UserType;
 import org.junit.*;
 
 public class UserDAOImplTest {
