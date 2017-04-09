@@ -1,6 +1,7 @@
 package by.pvt.heldyieu.interfaces;
 
 import by.pvt.heldyieu.exception.DaoException;
+
 import java.util.List;
 
 public interface GenericDAO <T, PK extends Number> {

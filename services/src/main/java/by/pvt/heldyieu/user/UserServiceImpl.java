@@ -5,7 +5,6 @@ import by.pvt.heldyieu.exception.DaoException;
 import by.pvt.heldyieu.implementation.UserDAOImpl;
 import by.pvt.heldyieu.utils.HibernateUtil;
 import org.apache.log4j.Logger;
-import org.hibernate.CacheMode;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -32,87 +31,31 @@ public class UserServiceImpl implements IUserService{
 	@Override
 	public void addUser(User user) throws DaoException {
 		LOGGER.info("Try to add new user to database");
-		Session session = HibernateUtil.getInstance().getSession();
-		Transaction transaction = null;
-		try {
-			transaction = session.beginTransaction();
 			userDao.create(user);
-			transaction.commit();
-		} catch (Exception e){
-			transaction.rollback();
-		}
-        HibernateUtil.getInstance().releaseSession(session);
     }
 
 	@Override
 	public User getUser(Integer id) throws DaoException {
 		User user = null;
-		Session session = HibernateUtil.getInstance().getSession();
-        session.setCacheMode(CacheMode.IGNORE);
-		Transaction transaction = null;
-		try {
-			transaction = session.beginTransaction();
-			user = userDao.readById(id);
-			transaction.commit();
-			LOGGER.info(user);
-		}
-		catch (Exception e) {
-			transaction.rollback();
-			LOGGER.error(e);
-		}
-        HibernateUtil.getInstance().releaseSession(session);
+		user = userDao.readById(id);
 		return user;
     }
 	@Override
 	public void updateUser(User user) throws DaoException {
-		Session session = HibernateUtil.getInstance().getSession();
-        session.setCacheMode(CacheMode.IGNORE);
-		Transaction transaction = null;
-		try {
-			transaction = session.beginTransaction();
 			userDao.update(user);
-			transaction.commit();
-		}
-		catch (Exception e) {
-			transaction.rollback();
-            throw new DaoException();
-		}
-        HibernateUtil.getInstance().releaseSession(session);
     }
+
 	@Override
 	public boolean deleteUser(Integer id) throws DaoException {
 		boolean result = false;
-		Session session = HibernateUtil.getInstance().getSession();
-		Transaction transaction = null;
-		try {
-			transaction = session.beginTransaction();
-			userDao.delete(id);
-			transaction.commit();
-			result = true;
-		}
-		catch (Exception e) {
-			transaction.rollback();
-		}
-        HibernateUtil.getInstance().releaseSession(session);
+		result = userDao.delete(id);
 		return result;
     }
 
 	@Override
 	public List<User> getAllUsers() throws DaoException {
         List<User> users = null;
-        Session session = HibernateUtil.getInstance().getSession();
-        session.setCacheMode(CacheMode.IGNORE);
-        Transaction transaction = null;
-        try {
-            transaction = session.beginTransaction();
-            users = userDao.getAll();
-            transaction.commit();
-        }
-        catch (Exception e) {
-            transaction.rollback();
-        }
-        HibernateUtil.getInstance().releaseSession(session);
-
+        users = userDao.getAll();
         return users;
     }
 	@Override
@@ -128,7 +71,9 @@ public class UserServiceImpl implements IUserService{
 		} catch (Exception e){
 			transaction.rollback();
 		}
-		HibernateUtil.getInstance().releaseSession(session);
-			return user;
+		finally {
+            HibernateUtil.getInstance().releaseSession(session);
+        }
+		return user;
     }
 }

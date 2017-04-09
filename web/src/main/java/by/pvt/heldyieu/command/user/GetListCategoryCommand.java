@@ -33,7 +33,7 @@ public class GetListCategoryCommand implements ServletCommand {
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}
-		if (categoryTypes.size()!=0) {
+		if (categoryTypes!=null) {
 				request.setAttribute(LIST, categoryTypes);
 				resultPage =  addMagazinePage;
 			} else {

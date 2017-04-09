@@ -32,82 +32,54 @@ public class UserTServiceImpl implements IUserTService {
     @Override
     public void addUserT(UserT userT) throws DaoException {
         LOGGER.info("Try to add new user to database");
-
-        Session session = HibernateUtil.getInstance().getSession();
-        Transaction transaction = null;
         try {
-            transaction = session.beginTransaction();
             userTDao.create(userT);
-            transaction.commit();
         } catch (Exception e){
-            transaction.rollback();
+            throw new DaoException();
         }
-        HibernateUtil.getInstance().releaseSession(session);
     }
 
     @Override
     public UserT getUserT(Integer id) throws DaoException {
         UserT userT = null;
-        Session session = HibernateUtil.getInstance().getSession();
-        Transaction transaction = null;
         try {
-            transaction = session.beginTransaction();
             userT = userTDao.readById(id);
-            transaction.commit();
         }
         catch (Exception e) {
-            transaction.rollback();
-            LOGGER.error(e);
+            throw new DaoException();
         }
-        HibernateUtil.getInstance().releaseSession(session);
         return userT;
     }
     @Override
     public void updateUserT(UserT userT) throws DaoException {
-        Session session = HibernateUtil.getInstance().getSession();
-        Transaction transaction = null;
         try {
-            transaction = session.beginTransaction();
             userTDao.update(userT);
-            transaction.commit();
         }
         catch (Exception e) {
-            transaction.rollback();
+            throw new DaoException();
         }
-        HibernateUtil.getInstance().releaseSession(session);
     }
     @Override
     public boolean deleteUserT(Integer id) throws DaoException {
         boolean result = false;
-        Session session = HibernateUtil.getInstance().getSession();
-        Transaction transaction = null;
         try {
-            transaction = session.beginTransaction();
-            userTDao.delete(id);
-            transaction.commit();
-            result = true;
+            result = userTDao.delete(id);
         }
         catch (Exception e) {
-            transaction.rollback();
+            throw new DaoException();
         }
-        HibernateUtil.getInstance().releaseSession(session);
         return result;
     }
 
     @Override
     public List<UserT> getAllUsersT() throws DaoException {
         List<UserT> users = null;
-        Session session = HibernateUtil.getInstance().getSession();
-        Transaction transaction = null;
         try {
-            transaction = session.beginTransaction();
             users = userTDao.getAll();
-            transaction.commit();
         }
         catch (Exception e) {
-            transaction.rollback();
+            throw new DaoException();
         }
-        HibernateUtil.getInstance().releaseSession(session);
         return users;
     }
 

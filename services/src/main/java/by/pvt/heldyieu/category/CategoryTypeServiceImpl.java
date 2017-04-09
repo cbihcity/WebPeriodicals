@@ -26,98 +26,67 @@ public class CategoryTypeServiceImpl implements ICategoryTypeService {
 
     @Override
     public void addCategoryType(CategoryType categoryType) throws DaoException {
-        Session session = HibernateUtil.getInstance().getSession();
-        Transaction transaction = null;
         try {
-            transaction = session.beginTransaction();
             categoryTypeDAO.create(categoryType);
-            transaction.commit();
         } catch (Exception e){
-            transaction.rollback();
+            throw new DaoException();
         }
-        HibernateUtil.getInstance().releaseSession(session);
     }
 
     @Override
     public CategoryType getCategoryType(Integer id) throws DaoException {
         CategoryType categoryType = null;
-        Session session = HibernateUtil.getInstance().getSession();
-        Transaction transaction = null;
         try {
-            transaction = session.beginTransaction();
             categoryType = categoryTypeDAO.readById(id);
-            transaction.commit();
         }
         catch (Exception e) {
-            transaction.rollback();
+            throw new DaoException();
         }
-        HibernateUtil.getInstance().releaseSession(session);
         return categoryType;
     }
 
     @Override
     public void updateCategoryType(CategoryType categoryType) throws DaoException {
-        Session session = HibernateUtil.getInstance().getSession();
-        Transaction transaction = null;
         try {
-            transaction = session.beginTransaction();
             categoryTypeDAO.update(categoryType);
-            transaction.commit();
         }
         catch (Exception e) {
-            transaction.rollback();
+            throw new DaoException();
         }
-        HibernateUtil.getInstance().releaseSession(session);
     }
 
     @Override
     public boolean deleteCategoryType(Integer id) throws DaoException  {
         boolean result = false;
-        Session session = HibernateUtil.getInstance().getSession();
-        Transaction transaction = null;
         try {
-            transaction = session.beginTransaction();
-            categoryTypeDAO.delete(id);
-            transaction.commit();
-            result = true;
+            result = categoryTypeDAO.delete(id);
         }
         catch (Exception e) {
-            transaction.rollback();
+            throw new DaoException();
         }
-        HibernateUtil.getInstance().releaseSession(session);
         return result;
     }
 
     @Override
     public List<CategoryType> getAllCategoryType() throws DaoException {
         List<CategoryType> categoryTypes = null;
-        Session session = HibernateUtil.getInstance().getSession();
-        Transaction transaction = null;
         try {
-            transaction = session.beginTransaction();
             categoryTypes = categoryTypeDAO.getAll();
-            transaction.commit();
         }
         catch (Exception e) {
-            transaction.rollback();
+            throw new DaoException();
         }
-        HibernateUtil.getInstance().releaseSession(session);
         return categoryTypes;
     }
 
     @Override
     public CategoryType findCategoryByName(String name) throws DaoException {
         CategoryType categoryType = null;
-        Session session = HibernateUtil.getInstance().getSession();
-        Transaction transaction = null;
         try {
-            transaction = session.beginTransaction();
             categoryType = categoryTypeDAO.findCategoryByName(name);
-            transaction.commit();
         } catch (Exception e){
-            transaction.rollback();
+            throw new DaoException();
         }
-        HibernateUtil.getInstance().releaseSession(session);
         return categoryType;
     }
 }
